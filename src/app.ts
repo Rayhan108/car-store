@@ -8,7 +8,7 @@ app.use(cors())
 
 app.get('/', (req:Request, res:Response
 ) => {
-  res.send('Hello World!')
+  res.send({status:200,message:'Hello World!'})
 })
 
 export default app
