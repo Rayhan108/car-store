@@ -44,7 +44,26 @@ res.status(200).json({
       }
 }
 
-
+//get single car 
+const getSingleCar = async(req:Request,res:Response)=>{
+ try{
+    const {carId}=req.params;
+    const result = await carServices.getSingleCarFromDB(carId);
+    res.status(200).json({
+        message:"Car is retrived succesfully",
+        success:true,
+        data:result
+    })
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ }catch(err:any){
+    res.json({
+        message: err.name || "Something went wrong",
+        success: false,
+        error: err,
+        stack: err.stack,
+      });
+ }
+}
 
 
 
@@ -53,5 +72,6 @@ res.status(200).json({
 
 export const CarController = {
   createCar,
-  getAllCar
+  getAllCar,
+  getSingleCar
 };
