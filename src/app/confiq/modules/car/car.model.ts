@@ -42,6 +42,8 @@ const carSchema = new Schema<Tcar>({
         required: true,
         default: true,
       }
-})
+},
+{ timestamps: true }
+)
 
-export const CarModel = model('Car',carSchema)
+export const CarModel = model<Tcar>('Car',carSchema)

@@ -8,7 +8,7 @@ const createCar = async (req: Request, res: Response) => {
 
     const zodparsedData = carValidationSchema.parse(carData);
     const result = await carServices.createCarIntoDB(zodparsedData);
-    res.sendStatus(200).json({
+    res.send({
       message: "Car created successfully",
       success: true,
       data: result,
@@ -74,7 +74,7 @@ const updateCar = async(req:Request,res:Response)=>{
     res.status(200).json({
       message:"Car is updated succesfully",
       success:true,
-      data:result
+      data:result 
   })
   }catch(err:any){
     res.json({
@@ -93,7 +93,7 @@ const deleteCar =async (req:Request,res:Response)=>{
     res.status(200).json({
       message:"Car is deleted succesfully",
       success:true,
-      data:result
+      data:result || {}
   })
   }catch(err:any){
     res.json({
@@ -104,8 +104,6 @@ const deleteCar =async (req:Request,res:Response)=>{
       });
  }
 }
-
-
 
 
 export const CarController = {
