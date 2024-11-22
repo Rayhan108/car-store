@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from "express";
 import carValidationSchema from "./car.validation";
 import { carServices } from "./car.services";
@@ -64,7 +65,26 @@ const getSingleCar = async(req:Request,res:Response)=>{
       });
  }
 }
-
+//update car
+const updateCar = async(req:Request,res:Response)=>{
+  try{
+    const {carId} = req.params;
+    const newData = req.body;
+    const result = await carServices.updateCarFromDB(carId,newData);
+    res.status(200).json({
+      message:"Car is updated succesfully",
+      success:true,
+      data:result
+  })
+  }catch(err:any){
+    res.json({
+        message: err.name || "Something went wrong",
+        success: false,
+        error: err,
+        stack: err.stack,
+      });
+ }
+}
 
 
 
@@ -73,5 +93,6 @@ const getSingleCar = async(req:Request,res:Response)=>{
 export const CarController = {
   createCar,
   getAllCar,
-  getSingleCar
+  getSingleCar,
+  updateCar,
 };
