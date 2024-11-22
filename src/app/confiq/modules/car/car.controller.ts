@@ -85,7 +85,25 @@ const updateCar = async(req:Request,res:Response)=>{
       });
  }
 }
-
+// delete car 
+const deleteCar =async (req:Request,res:Response)=>{
+  try{
+    const {carId} = req.params;
+    const result = await carServices.deleteCarFromDB(carId);
+    res.status(200).json({
+      message:"Car is deleted succesfully",
+      success:true,
+      data:result
+  })
+  }catch(err:any){
+    res.json({
+        message: err.name || "Something went wrong",
+        success: false,
+        error: err,
+        stack: err.stack,
+      });
+ }
+}
 
 
 
@@ -95,4 +113,5 @@ export const CarController = {
   getAllCar,
   getSingleCar,
   updateCar,
+  deleteCar
 };
