@@ -22,6 +22,36 @@ const createCar = async (req: Request, res: Response) => {
     });
   }
 };
+
+//get all car
+const getAllCar = async(req:Request,res:Response)=>{
+try{
+    const result = await carServices.getAllCarFromDB();
+res.status(200).json({
+    message:"Cars retrived succesfully",
+    success:true,
+    data:result
+})
+}
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (err: any) {
+        res.json({
+          message: err.name || "Something went wrong",
+          success: false,
+          error: err,
+          stack: err.stack,
+        });
+      }
+}
+
+
+
+
+
+
+
+
 export const CarController = {
   createCar,
+  getAllCar
 };

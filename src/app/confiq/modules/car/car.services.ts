@@ -7,7 +7,11 @@ const createCarIntoDB = async (carData: Tcar) => {
   const result = await student.save(); //built in instance method
   return result;
 };
-
+const getAllCarFromDB = async()=>{
+    const result = await CarModel.find();
+    return result;
+}
 export const carServices={
     createCarIntoDB,
+    getAllCarFromDB
 }
