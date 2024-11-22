@@ -14,7 +14,7 @@ const createOrder =  async (req: Request, res: Response) =>{
         data: result,
       });
  }catch (err: any) {
-    console.log(err);
+    
     res.json({
       message: err.name || "Something went wrong",
       success: false,
@@ -24,7 +24,26 @@ const createOrder =  async (req: Request, res: Response) =>{
   }
 
 }
-
+ const getTotalRevenue = async (req: Request, res: Response) => {
+    try {
+   const result = await OrderServices.getTotalReveneuFromCarModel();
+      // Respond with total revenue
+      res.json({
+        message: "Revenue calculated successfully",
+        status: true,
+        data:  result ,
+      });
+    } catch (err: any) {
+     
+        res.json({
+            message: err.name || "Something went wrong",
+            success: false,
+            error: err,
+            stack: err.stack,
+          });
+    }
+  };
 export const OrderController={
-    createOrder
+    createOrder,
+    getTotalRevenue
 }
