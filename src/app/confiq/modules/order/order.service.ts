@@ -8,6 +8,7 @@ const createOrderIntoDB = async (orderData: Torder) => {
 
   if (!car) {
     throw new Error("Car not found.");
+    
   }
   if (car.quantity < orderData.quantity) {
     throw new Error("Insufficient Stock");
