@@ -12,7 +12,6 @@ const orderSchema = new Schema<Torder>(
         },
         car: {
           type: Schema.Types.ObjectId,
-          ref: "CarModel",
           required: true,
         },
         quantity: {

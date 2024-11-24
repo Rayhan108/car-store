@@ -1,7 +1,7 @@
 import { CarModel } from "../car/car.model";
 import { Torder } from "./order.interface";
 import { OrderModel } from "./order.model";
-
+//create an order
 const createOrderIntoDB = async (orderData: Torder) => {
   const order = new OrderModel(orderData);
   const car = await CarModel.findById(orderData.car);
@@ -20,6 +20,7 @@ const createOrderIntoDB = async (orderData: Torder) => {
   }
 
   await car.save();
+  
   const result = await order.save();
   return result;
 };

@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 
 import { OrderServices } from "./order.service";
 
+//create an order
 const createOrder =  async (req: Request, res: Response) =>{
  try{
     const {order:orderData}=req.body;
@@ -24,6 +25,8 @@ const createOrder =  async (req: Request, res: Response) =>{
   }
 
 }
+
+//get total revenue
  const getTotalRevenue = async (req: Request, res: Response) => {
     try {
    const result = await OrderServices.getTotalReveneuFromCarModel();
