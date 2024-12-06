@@ -52,14 +52,14 @@ const getSingleCar = async(req:Request,res:Response)=>{
     const result = await carServices.getSingleCarFromDB(carId);
     res.status(200).json({
         message:"Car is retrived succesfully",
-        success:true,
+        status:true,
         data:result
     })
  // eslint-disable-next-line @typescript-eslint/no-explicit-any
  }catch(err:any){
     res.json({
         message: err.name || "Something went wrong",
-        success: false,
+        status: false,
         error: err,
         stack: err.stack,
       });
@@ -73,13 +73,13 @@ const updateCar = async(req:Request,res:Response)=>{
     const result = await carServices.updateCarFromDB(carId,newData);
     res.status(200).json({
       message:"Car is updated succesfully",
-      success:true,
+      status:true,
       data:result 
   })
   }catch(err:any){
     res.json({
         message: err.name || "Something went wrong",
-        success: false,
+        status: false,
         error: err,
         stack: err.stack,
       });
@@ -92,13 +92,13 @@ const deleteCar =async (req:Request,res:Response)=>{
     const result = await carServices.deleteCarFromDB(carId);
     res.status(200).json({
       message:"Car is deleted succesfully",
-      success:true,
+      status:true,
       data:result || {}
   })
   }catch(err:any){
     res.json({
         message: err.name || "Something went wrong",
-        success: false,
+        status: false,
         error: err,
         stack: err.stack,
       });
