@@ -10,14 +10,14 @@ const createCar = async (req: Request, res: Response) => {
     const result = await carServices.createCarIntoDB(zodparsedData);
     res.send({
       message: "Car created successfully",
-      success: true,
+      status: true,
       data: result,
     });
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     res.json({
       message: err.name || "Something went wrong",
-      success: false,
+      status: false,
       error: err,
       stack: err.stack,
     });
@@ -30,7 +30,7 @@ try{
     const result = await carServices.getAllCarFromDB();
 res.status(200).json({
     message:"Cars retrived succesfully",
-    success:true,
+    status:true,
     data:result
 })
 }
@@ -38,7 +38,7 @@ res.status(200).json({
     catch (err: any) {
         res.json({
           message: err.name || "Something went wrong",
-          success: false,
+          status: false,
           error: err,
           stack: err.stack,
         });

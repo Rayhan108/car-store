@@ -11,14 +11,14 @@ const createOrder =  async (req: Request, res: Response) =>{
     const result = await OrderServices.createOrderIntoDB(req.body);
     res.send({
         message: "Order created successfully",
-        success: true,
+        status: true,
         data: result,
       });
  }catch (err: any) {
     
     res.json({
       message: err.name || "Something went wrong",
-      success: false,
+      status: false,
       error: err,
       stack: err.stack,
     });
@@ -40,7 +40,7 @@ const createOrder =  async (req: Request, res: Response) =>{
      
         res.json({
             message: err.name || "Something went wrong",
-            success: false,
+            status: false,
             error: err,
             stack: err.stack,
           });
